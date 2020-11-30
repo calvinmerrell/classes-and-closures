@@ -98,10 +98,10 @@ class Manager extends Employee {
 class ProgressiveManager extends Manager {
   constructor (first_name, last_name, email, age, reports, title, bonus){
   super(first_name, last_name, email, age, reports)
-  this.title = "Not a manager"
+  this.title = 'Not a manager'
   this.bonus = 0
 }
-promotion () {
+promotion (Manager) {
     if(this.reports.length >= 1 && this.reports.length <= 3){
         this.title === "Barely Manager"
       } else if  (this.reports.length >= 4 && this.reports.length <= 10){
@@ -115,12 +115,11 @@ promotion () {
       } else {
         this.title === "not a manager"
       }
+      console.log(promotion(2))
 
-bonusCount (){
-  if(counter.Hire()){ 
-  100 + this.bonus
-}
-}
+  bonusCount (Manager)
+   if(counter.Hire()){ 100 + this.bonus }
+  }
 }
 
 
@@ -148,23 +147,23 @@ bonusCount (){
 */
 
 //Code Here
-class Machine {
-  constructor (){
-    this.widgets_made_count = 0
-    this.wear_and_tear_count = 0
-    this.needs_reboot = false 
-  }
-  makeWidgets(num) {
-    this.widgets_made_count += num
-    this.wear_and_tear_count += (this.widgets_made_count / 50)
-  }
-  fixMachine() {
-    if(this.needs_reboot === false)
-    this.needs_reboot === true
-  }
-  reboot(){
-    this.wear_and_tear_count - 10
-      if(this.needs_reboot === true)
-    this.needs_reboot === false
-  }
-}
+// class Machine {
+//   constructor (){
+//     this.widgets_made_count = 0
+//     this.wear_and_tear_count = 0
+//     this.needs_reboot = false 
+//   }
+//   makeWidgets(num) {
+//     this.widgets_made_count += num
+//     this.wear_and_tear_count += (this.widgets_made_count / 50)
+//   }
+//   fixMachine() {
+//     if(this.needs_reboot === false)
+//     this.needs_reboot === true
+//   }
+//   reboot(){
+//     this.wear_and_tear_count - 10
+//       if(this.needs_reboot === true)
+//     this.needs_reboot === false
+//   }
+// }
