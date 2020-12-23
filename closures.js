@@ -114,11 +114,11 @@ var counterFactory = (function() {
 })();
 
 
-// counter = counterFactory(10);
-// counter.inc() // 11
-// counter.inc() // 12
-// counter.inc() // 13
-// counter.dec() // 12
+counter = counterFactory(10);
+counter.inc() // 11
+counter.inc() // 12
+counter.inc() // 13
+counter.dec() // 12
 
 
 

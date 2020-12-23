@@ -70,7 +70,6 @@ class Manager extends Employee {
   fire(index){
     this.reports.splice(index,1)
   }
-
 }
 
 ////////// PROBLEM 3 //////////
@@ -95,32 +94,46 @@ class Manager extends Employee {
 */
 
 //Code Here
-class ProgressiveManager extends Manager {
-  constructor (first_name, last_name, email, age, reports, title, bonus){
-  super(first_name, last_name, email, age, reports)
+class ProgressiveManager extends Manager{
+  constructor(first_name, last_name, email, age){
+  super(first_name, last_name, email, age)
   this.title = 'Not a manager'
   this.bonus = 0
-}
-promotion (Manager) {
-    if(this.reports.length >= 1 && this.reports.length <= 3){
-        this.title === "Barely Manager"
-      } else if  (this.reports.length >= 4 && this.reports.length <= 10){
-        this.title === "Mostly Manager"
-      } else if  (this.reports.length >= 11 && this.reports.length <= 50){
-        this.title === "Manager"
-      } else if  (this.reports.length >= 51 && this.reports.length <= 100){
-        this.title === "Manager Plus"
-      } else if  (this.reports.length > 100){
-        this.title === "Bestest Manager"
-      } else {
-        this.title === "not a manager"
-      }
-      console.log(promotion(2))
+  }
 
-  bonusCount (Manager)
-   if(counter.Hire()){ 100 + this.bonus }
+  hire(employee){
+    super.hire(employee)
+    if(this.reports.length === 0){
+       this.title = 'Not a manager'
+    }else if(this.reports.length <= 3 && this.reports.length >= 1){
+      return this.title = 'Barely Manager'
+    }else if(this.reports.length <= 10 && this.reports.length >= 4){
+      return this.title = 'Mostly Manager'
+    }else if(this.reports.length <= 50 && this.reports.length >= 11){
+      return this.title = 'Manager'
+    }else if(this.reports.length <= 100 && this.reports.length >= 51){
+      return this.title = 'Manager Plus'
+    }else if(this.reports.length > 100)
+      return this.title = 'Bestest Manager'
+  }
+  fire(index){
+    super.fire(index)
+    this.bonus += 100
+    if(this.reports.length === 0){
+       this.title = 'Not a manager'
+    }else if(this.reports.length <= 3 && this.reports.length >= 1){
+      return this.title = 'Barely Manager'
+    }else if(this.reports.length <= 10 && this.reports.length >= 4){
+      return this.title = 'Mostly Manager'
+    }else if(this.reports.length <= 50 && this.reports.length >= 11){
+      return this.title = 'Manager'
+    }else if(this.reports.length <= 100 && this.reports.length >= 51){
+      return this.title = 'Manager Plus'
+    }else if(this.reports.length > 100)
+      return this.title = 'Bestest Manager'
   }
 }
+  
 
 
 ////////// PROBLEM 4 - Black Diamond //////////
