@@ -46,7 +46,7 @@ function callFriend(name) {
 // /*
 //   Above you're given a callFriend function that returns the dial function.
 //   Store the result of invoking callFriend in a variable named callJake.
-  
+
 //   When callJake is invoked with '435-555-9248', it returns 'Calling Jake at 435-555-9248' 
 //   (HINT: You will need to pass in arguments to both function invocations)
 // */
@@ -92,29 +92,27 @@ count(); // 4
 // */
 // //do I need to get rid of the this.inc this.dec and declare a function or something? 
 
-var counterFactory = (function() {
-  var privateCounter = 0;
-  function changeBy(val) {
-    privateCounter += val;
+function counterFactory(n) {
+
+  var counter = n;
+
+  var inc = function () {
+    counter++;
+    return counter
+  };
+
+  var dec = function () {
+    counter--;
+    return counter
   }
 
   return {
-    inc: function() {
-      changeBy(1);
-    },
-
-    dec: function() {
-      changeBy(-1);
-    },
-
-    value: function() {
-      return privateCounter;
-    }
+    inc,
+    dec
   };
-})();
+}
 
-
-counter = counterFactory(10);
+counter = counterFactory(5);
 counter.inc() // 11
 counter.inc() // 12
 counter.inc() // 13
@@ -158,20 +156,16 @@ var module = (function () {
   function privateMethod() {
     return "Hi, I'm " + person.name + ", age " + person.age + " from " + person.location;
   }
-  function publicMethod() {
-    return privateMethod;
-  }
-})
 
-//   // Anything that is being returned is made public and can be invoked from
-//   // outside our lexical scope
-//   return {
-//     publicMethod: function () {
-//       return module.person.publicMethod()
-//     }
-//     // Code here.
-//   };
-// })();
+  // Anything that is being returned is made public and can be invoked from
+  // outside our lexical scope
+  return {
+    publicMethod() {
+      return privateMethod()
+    }
+  };
+})();
+module.publicMethod();
 
 
 
@@ -185,26 +179,21 @@ var module = (function () {
 //   takeAwayFromSecret should have a parameter that takes away from the secret number returning the updated secret number.
 // */
 
-// function secretNumber() {
-//   let secret = 143;
+function secretNumber() {
+  let secret = 143;
 
-//   return {
-//     addToSecret: function (num) {
-//       num += secret;
-//       return num;
-//     },
+  return {
+    addToSecret: function (num) {
+      secret += num;
+      return secret;
+    },
 
-//     takeAwayFromSecret: function (num) {
-//       num -= secret;
-//       return num;
-//     }
-//   };
-// }
-// let newNumber = secretNumber(143);
-// console.log(newNumber.addToSecret(5))
-
-// //no idea why this won't pass spec runner. 
-// //It works when I console log different numbers and use the Add or TakeAway
+    takeAwayFromSecret: function (num) {
+      secret -= num;
+      return secret;
+    }
+  };
+}
 
 
 
@@ -226,15 +215,13 @@ var module = (function () {
 //   Fix the code below to log the desired output.
 // */
 
-// function timeOutCounter() {
-//   for (var i = 0; i <= 5; i++) {
-//     (function() {
-//       var j = i;
-//     setTimeout(function() {
-//       console.log(j);
-//     }, j * 1000);
-//   })()
-// }
-
-// timeOutCounter();
-
+function timeOutCounter() {
+  for (var i = 0; i <= 5; i++) {
+    setTimeout((function(i) {
+      return function inner(){
+        console.log(i);
+      }
+    })(i), 1000);
+  }
+}
+timeOutCounter();
